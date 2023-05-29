@@ -93,7 +93,7 @@ const ImageViewerMainImageContainer = ({ imageSrc, children }) => {
           width="430"
           height="360"
           onLoad={onImageLoad}
-          style={{ display: imageLoaded ? 'block' : 'none' }}
+          style={{ display: imageLoaded ? 'flex' : 'none' }}
         />
         <div className="details">
           {children}
@@ -126,9 +126,10 @@ const ImageViewerThumbnail = ({ className, onClick, title, id, imageSrc }) => {
       className={className}
     >
       <ImageLoadingIndicator
-        className={`img ${className}`}
+        className="img"
         imageLoaded={imageLoaded}
         size={ImageLoadingIndicator.size.SMALL}
+        style={{ display: imageLoaded ? 'none' : 'flex' }}
       />
       <img
         src={imageSrc}
@@ -136,9 +137,9 @@ const ImageViewerThumbnail = ({ className, onClick, title, id, imageSrc }) => {
         width="145"
         height="121"
         onLoad={() => setImageLoaded(true)}
-        style={{ display: imageLoaded ? 'block' : 'none' }}
+        style={{ display: imageLoaded ? 'flex' : 'none' }}
       />
-      <span>{id}</span>
+      <span>{id.substring(0, 4)}</span>
     </a>
   );
 };

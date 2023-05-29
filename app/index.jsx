@@ -7,7 +7,7 @@ import Home from './Home/index';
 import printGreeting from './printGreeting';
 import reportWebVitals from './reportWebVitals';
 
-import './style/style.scss';
+import './style.scss';
 
 const App = () => (
   <BrowserRouter>

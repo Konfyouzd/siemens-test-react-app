@@ -6,6 +6,11 @@
 	padding: 0;
 }
 
+/* After including Bootstrap for the loading spinners, it caused some problems with the supplied layout */
+*, ::before, ::after {
+	box-sizing: unset !important;
+}
+
 body {
 	background: #eee;
 	color: #333;
@@ -166,12 +171,12 @@ header {
 }
 
 .previous {
-	background: url(../images/previous.png) no-repeat 0 0;
+	background: url(./images/previous.png) no-repeat 0 0;
 	left: 10px;
 }
 
 .next {
-	background: url(../images/next.png) no-repeat 0 0;
+	background: url(./images/next.png) no-repeat 0 0;
 	right: 10px;
 }
 
