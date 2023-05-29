@@ -3,9 +3,10 @@ import Helmet from 'react-helmet';
 
 import LoadingSpinner from 'common/components/LoadingSpinner';
 import { onError } from 'common/functions/error';
-import ImageViewer from './components/ImageViewer';
 
+import ImageViewer from './components/ImageViewer';
 import getMetadata from './fetch/getMetadata';
+import imageMetadataAttributes from './imageMetadataAttributes';
 import { getThumbnailImageUrl, getFullsizeImageUrl } from './utils';
 
 const Home = () => {
@@ -89,24 +90,13 @@ const Home = () => {
       <Helmet title="Code Development Project" />
       <ImageViewer header="Code Development Project">
         <ImageViewer.MainImageContainer imageSrc={getFullsizeImageUrl(imagesMetadata[activeImage].image)}>
-          <ImageViewer.MainImageDetail title="Title">
-            {imagesMetadata[activeImage].title}
-          </ImageViewer.MainImageDetail>
-          <ImageViewer.MainImageDetail title="Description">
-            {imagesMetadata[activeImage].description}
-          </ImageViewer.MainImageDetail>
-          <ImageViewer.MainImageDetail title="Cost">
-            {imagesMetadata[activeImage].cost}
-          </ImageViewer.MainImageDetail>
-          <ImageViewer.MainImageDetail title="ID #">
-            {imagesMetadata[activeImage].id}
-          </ImageViewer.MainImageDetail>
-          <ImageViewer.MainImageDetail title="Thumbnail File">
-            {imagesMetadata[activeImage].thumbnail}
-          </ImageViewer.MainImageDetail>
-          <ImageViewer.MainImageDetail title="Large Image File">
-            {imagesMetadata[activeImage].image}
-          </ImageViewer.MainImageDetail>
+          {
+            imageMetadataAttributes.map(({ key, title }) => (
+              <ImageViewer.MainImageDetail title={title}>
+                {imagesMetadata[activeImage][key]}
+              </ImageViewer.MainImageDetail>
+            ))
+          }
         </ImageViewer.MainImageContainer>
         <ImageViewer.ThumbnailContainer
           previousDisabled={previousDisabled}
